@@ -6,6 +6,7 @@
 package Calendar;
 
 import GUI.MainFrame;
+import MVC.ManejadorHaab;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,16 +26,20 @@ public class Matriz extends JPanel implements ActionListener,ComponentListener{
     private JButton[][] mCasillas;
     private int nFilas;
     private int mColumnas;
+    private int rCasillas;
     private EnumMatriz tipo;
     //private ConstanteFaseLunar constLunar;
+    private ManejadorHaab manejadorHab;
+    private ManejadorCalendarioCholqij manejadorCholqij;
     private MainFrame frame;
     
     //en lugar del enum podria mejor traer un tipo de calendario
-    public Matriz(MainFrame frame, int nFilas, int mColumnas, EnumMatriz tipo) {
+    public Matriz(MainFrame frame, int nFilas, int mColumnas, int rCasillas, EnumMatriz tipo) {
         this.frame = frame;
         this.mCasillas = null;
         this.nFilas = nFilas;
         this.mColumnas = mColumnas;
+        this.rCasillas = rCasillas;
         this.tipo= tipo;
         this.setLayout(null);
         this.setBackground(Color.GRAY);
@@ -60,29 +65,79 @@ public class Matriz extends JPanel implements ActionListener,ComponentListener{
     public void inicializar(){
         switch (tipo) {
             case HAAB:
-                colocarCasillas(365, new CalendarioHaab(true));
+                colocarCasillasHabb();
                 break;
             case CHOLQUIJ:
+                colocarCasillasCholqij();
                 //
                 break;
             case LUNAR:
+                colocarCasillasFaseLunar();
                 //
                 break;
             default:
                 throw new AssertionError();
         }
     }
-    public void colocarCasillas(int cantidad, Calendario calendario){
-        CalendarioHaab cal= (CalendarioHaab)calendario;
+    public void colocarCasillasHabb(){
+        //CalendarioHaab cal= (CalendarioHaab)calendario;
+        manejadorHab = new ManejadorHaab();
+        
+        Kin_Haab[][] = manejadorHab.getDiaCero();
+        int casilla = 0;
+        mCasillas = new JButton[nFilas][mColumnas];
+        for (int i = 0; i < nFilas; i++) {
+            for (int j = 0; j < mColumnas; j++) {
+                //constLunar = new ConstanteFaseLunar(casilla);  IR A LA BD A TRAER ESA INFO
+                
+                JButton temp = new JButton();
+                    
+                if (casilla<=rCasillas) {
+                    //establecerAtributosCasilla(temp, new ImageIcon(constLunar.obtenerRutaImagen()), casilla);
+                    temp.setName(""+casilla);
+                    this.add(temp);
+                }
+                     
+                mCasillas[i][j] = temp;
+                casilla ++;
+            }
+        }
+    }
+    public void colocarCasillasCholqij(){
+        //CalendarioHaab cal= (CalendarioHaab)calendario;
+        manejadorCholqij = new ManejadorCalendarioCholqij()
         
         int casilla = 0;
         mCasillas = new JButton[nFilas][mColumnas];
         for (int i = 0; i < nFilas; i++) {
             for (int j = 0; j < mColumnas; j++) {
                 //constLunar = new ConstanteFaseLunar(casilla);  IR A LA BD A TRAER ESA INFO
+                
                 JButton temp = new JButton();
                 
-                if (casilla<=cantidad) {
+                if (casilla<=rCasillas) {
+                    //establecerAtributosCasilla(temp, new ImageIcon(constLunar.obtenerRutaImagen()), casilla);
+                    temp.setName(""+casilla);
+                    this.add(temp);
+                }
+                     
+                mCasillas[i][j] = temp;
+                casilla ++;
+            }
+        }
+    }
+    public void colocarCasillasFaseLunar(){
+        //CalendarioHaab cal= (CalendarioHaab)calendario;
+        manejadorHab = new ManejadorHaab();
+        
+        int casilla = 0;
+        mCasillas = new JButton[nFilas][mColumnas];
+        for (int i = 0; i < nFilas; i++) {
+            for (int j = 0; j < mColumnas; j++) {
+                //constLunar = new ConstanteFaseLunar(casilla);  IR A LA BD A TRAER ESA INFO       
+                JButton temp = new JButton();
+                
+                if (casilla<=rCasillas) {
                     //establecerAtributosCasilla(temp, new ImageIcon(constLunar.obtenerRutaImagen()), casilla);
                     temp.setName(""+casilla);
                     this.add(temp);

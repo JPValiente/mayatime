@@ -1,5 +1,7 @@
 package GUI;
 
+import Calendar.EnumMatriz;
+import Calendar.Matriz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -9,12 +11,13 @@ import java.awt.Dimension;
  */
 public class VistaMatriz extends javax.swing.JDialog {
     private MainFrame frame;
+    private Matriz tab;
     /**
      * Creates new form FrameMatrizLunar
      */
     public VistaMatriz(MainFrame frame) {
         this.frame = frame;
-        //this.tab = new PanelMatrizLunar(frame,5,7);
+        this.tab = new Matriz(frame, 20, 13, 260, EnumMatriz.HAAB);
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(800, 600));
         this.setTitle("Fase Lunar");    //nombre de la matriz  este frame debe mostrar cualquier matriz tiene que traerel nom
