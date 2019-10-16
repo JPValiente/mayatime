@@ -22,8 +22,8 @@ public class ManejadorHaab {
        
     }
     
-    public Kin_Haab getDiaCero(){
-        return  calendarioHaab.getFechaExacta()[0][0];
+    public Kin_Haab[][] getDiaCero(){
+        return  calendarioHaab.getFechaExacta();
     }
 
     public Kin_Haab getTomorrow() {

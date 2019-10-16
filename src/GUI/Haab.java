@@ -24,14 +24,14 @@ public class Haab extends javax.swing.JFrame {
     }
 
     public void setDiaCero() {
-        Kin_Haab fecha = manejador.getDiaCero();
-        setDateIcons(fecha);
+        //Kin_Haab fecha = manejador.getDiaCero();
+        //setDateIcons(fecha);
     }
 
     public void setDateIcons(Kin_Haab fecha) {
-        this.panelDia.setIcon(new javax.swing.ImageIcon(getClass().getResource(fecha.getDia().getDireccionDeImagen())));
-        this.panelMes.setIcon(new javax.swing.ImageIcon(getClass().getResource(fecha.getMes().getDireccionDeImagen())));
-        this.infoArea.setText(fecha.getMes().getDescripcion() + "\n" + fecha.getDia().getDescripcion());
+        //this.panelDia.setIcon(new javax.swing.ImageIcon(getClass().getResource(fecha.getDia().getDireccionDeImagen())));
+        //this.panelMes.setIcon(new javax.swing.ImageIcon(getClass().getResource(fecha.getMes().getDireccionDeImagen())));
+        //this.infoArea.setText(fecha.getMes().getDescripcion() + "\n" + fecha.getDia().getDescripcion());
     }
 
     @SuppressWarnings("unchecked")

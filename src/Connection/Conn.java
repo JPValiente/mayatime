@@ -7,11 +7,7 @@ package Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
+
 
 
 /**
@@ -22,14 +18,15 @@ public class Conn {
     
     public static Connection conectarDB(){
     // La url incluye el esquema a usar, en este caso 'mysql'
-            String urlConnection = "jdbc:mysql://localhost:3306/mayaConnection";
+            String urlConnection = "jdbc:mysql://localhost:3306/MayaTime";
             String user = "root";
-            String password = "@#test1T#$";
+            String password = "mariadb";
             
             Connection conection = null;
             try{
             Class.forName("com.mysql.jdbc.Driver");
             conection =(Connection) DriverManager.getConnection(urlConnection, user, password);
+                System.out.println("se conecto");
 
             }catch(Exception e){
                 System.out.println(e);
