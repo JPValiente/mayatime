@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Haab.Kin_Haab;
 import MVC.ManejadorHaab;
 import javax.swing.JOptionPane;
 

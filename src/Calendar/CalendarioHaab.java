@@ -5,8 +5,14 @@
  */
 package Calendar;
 
+import Haab.Mes_Haab;
+import Haab.Kin_Haab;
+import Haab.Dia_Haab;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import Haab.Dia_Haab;
+import Haab.Kin_Haab;
+import Haab.Mes_Haab;
 
 /**
  *
@@ -40,10 +46,10 @@ public class CalendarioHaab implements Calendario {
     
     private void crearDias() {//Se crean 20 dias
         int numeroDeImagen;
-        String[] dias = dayNumber();
+        Dia_Haab[] dias = dayNumber();
         for (int i = 0; i < this.dia.length; i++) {
             numeroDeImagen = i;
-            this.dia[i] = new Dia_Haab(i + 1, INCIO_URL_DE_NUMERO + numeroDeImagen + ".jpg", dias[i]);
+            this.dia[i] = dias[i];
         }
     }
 
@@ -54,42 +60,42 @@ public class CalendarioHaab implements Calendario {
         int mesExtra;
         for (i = 0; i < this.mes.length - 1; i++) {
             numeroDeImagen = i + 1;
-            this.mes[i] = new Mes_Haab (i, INCIO_URL_DE_MES + +numeroDeImagen + ".jpg", meses[i], false);
+            this.mes[i] = new Mes_Haab(meses[i]);
         }
         mesExtra=i+1;
-        this.mes[i] = new Mes_Haab(i, INCIO_URL_DE_MES + mesExtra + ".jpg", meses[i], true);
+        this.mes[i] = new Mes_Haab(Integer.toString(mesExtra));
     }
     
      public Dia_Haab[] dayNumber(){
         Dia_Haab[] numbers = new Dia_Haab[20];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = new Dia_Haab(i);
+            numbers[i] = new Dia_Haab(Integer.toString(i));
         }
         return numbers;
     }
     
-    public Mes_Haab[] monthName(){
-        Mes_Haab[] months = new Mes_Haab[19];
+    public String[] monthName(){
+        String[] months = new String[19];
         
-        months[0] = new Mes_Haab("Pop");
-        months[1] = new Mes_Haab("Wo'");
-        months[2] = new Mes_Haab("Sip");
-        months[3] = new Mes_Haab("Sotz'");;
-        months[4] = new Mes_Haab("Sek");
-        months[5] = new Mes_Haab("Xul");
-        months[6] = new Mes_Haab("Yaxk'in");
-        months[7] = new Mes_Haab("Mol");
-        months[8] = new Mes_Haab("Ch'en");
-        months[9] = new Mes_Haab("Yax");
-        months[10] = new Mes_Haab("Sak'");
-        months[11] = new Mes_Haab("Keh");
-        months[12] = new Mes_Haab("Mak");
-        months[13] = new Mes_Haab("K'ank'in");
-        months[14] = new Mes_Haab("Muwan");
-        months[15] = new Mes_Haab("Pax");
-        months[16] = new Mes_Haab("Kayab");
-        months[17] = new Mes_Haab("Kumk'u");
-        months[18] = new Mes_Haab("Wayeb");
+        months[0] = "Pop";
+        months[1] = "Wo'";
+        months[2] = "Sip";
+        months[3] = "Sotz'";
+        months[4] = "Sek";
+        months[5] = "Xul";
+        months[6] = "Yaxk'in";
+        months[7] = "Mol";
+        months[8] = "Ch'en";
+        months[9] = "Yax";
+        months[10] = "Sak'";
+        months[11] = "Keh";
+        months[12] = "Mak";
+        months[13] = "K'ank'in";
+        months[14] = "Muwan";
+        months[15] = "Pax";
+        months[16] = "Kayab";
+        months[17] = "Kumk'u";
+        months[18] = "Wayeb";
         return months;
         
     }
@@ -98,7 +104,7 @@ public class CalendarioHaab implements Calendario {
         Kin_Haab fecha;
         
         for (int i = 0; i < mes.length ; i++) {
-            if (mes[i].isEsUltimoMes()) {
+            if (mesActual==19) {
                 for (int k = 0; k < 5; k++) {
                     fecha = new Kin_Haab(dia[k], mes[i]);
                     this.kinHaab[k][i]= fecha;   
@@ -112,13 +118,11 @@ public class CalendarioHaab implements Calendario {
         }
     }
 
-    @Override
     public Calendario getToday() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Calendario getTomorrow() {
+    public Kin_Haab getTomorrow() {
         
         if (mesActual != 18) {
             if (diaActual+1 > 19) {
@@ -143,8 +147,7 @@ public class CalendarioHaab implements Calendario {
         return kinHaab;
     }
 
-    @Override
-    public Calendario getYesterday() {
+    public Kin_Haab getYesterday() {
         if(mesActual>0){
             if(diaActual==0){
                 diaActual = 19;
@@ -183,17 +186,15 @@ public class CalendarioHaab implements Calendario {
         }
         
         
-        this.mes = mes;
-        this.dia = dia;
+        this.mesActual = mes;
+        this.diaActual = dia;
         return getFechaExacta()[dia][mes];
     }
 
-    @Override
     public Calendario[][] getMatrix() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public Calendario parseDate(Date date) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
