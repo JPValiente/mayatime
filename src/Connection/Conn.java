@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Conn {
     
-    public Connection conectarDB(){
+    public static Connection conectarDB(){
     // La url incluye el esquema a usar, en este caso 'mysql'
             String urlConnection = "jdbc:mysql://localhost:3306/mayaConnection";
             String user = "root";

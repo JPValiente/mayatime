@@ -5,6 +5,7 @@
  */
 package MVC;
 
+import Haab.Kin_Haab;
 import Calendar.CalendarioHaab;
 import javax.swing.JOptionPane;
 
@@ -38,13 +39,6 @@ public class ManejadorHaab {
         return calendarioHaab.getYesterday();
     }
 
-    public void setDia(Integer dia) {
-        this.dia = dia;
-    }
-
-    public void setMes(Integer mes) {
-        this.mes = mes;
-    }
 
     public CalendarioHaab getCalendarioHaab() {
         return calendarioHaab;
