@@ -5,7 +5,11 @@
  */
 package Calendar;
 
+import Calendar.cholqij.ManejadorCalendarioCholqij;
 import GUI.MainFrame;
+import Haab.Dia_Haab;
+import Haab.Kin_Haab;
+import Haab.Mes_Haab;
 import MVC.ManejadorHaab;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -80,10 +84,11 @@ public class Matriz extends JPanel implements ActionListener,ComponentListener{
         }
     }
     public void colocarCasillasHabb(){
-        //CalendarioHaab cal= (CalendarioHaab)calendario;
+        CalendarioHaab cal= new CalendarioHaab(true);
         manejadorHab = new ManejadorHaab();
+        Kin_Haab[][] kinHaab2= manejadorHab.getDiaCero();
         
-        Kin_Haab[][] = manejadorHab.getDiaCero();
+        Kin_Haab[][] kinHaab= cal.getFechaExacta();
         int casilla = 0;
         mCasillas = new JButton[nFilas][mColumnas];
         for (int i = 0; i < nFilas; i++) {
@@ -105,7 +110,7 @@ public class Matriz extends JPanel implements ActionListener,ComponentListener{
     }
     public void colocarCasillasCholqij(){
         //CalendarioHaab cal= (CalendarioHaab)calendario;
-        manejadorCholqij = new ManejadorCalendarioCholqij()
+        manejadorCholqij= new ManejadorCalendarioCholqij();
         
         int casilla = 0;
         mCasillas = new JButton[nFilas][mColumnas];

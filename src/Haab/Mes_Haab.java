@@ -25,13 +25,14 @@ public class Mes_Haab {
         Connection conexion = Conn.conectarDB();
         try {
             PreparedStatement declaracion;// prepara la orden 
-            declaracion = conexion.prepareStatement("SELECT * FROM MES WHERE Nombre=?;");
+            declaracion = conexion.prepareStatement("SELECT * FROM Mes WHERE Nombre=?;");
+            declaracion.setString(1,nombre);//parametro 1 estado
             ResultSet resultado = declaracion.executeQuery();
 
             while (resultado.next()) {// maneja el resultado 
                 Object datos[] = new Object[2];
-                this.nombre = resultado.getString(1);
-                url = resultado.getString(2);                
+                this.nombre = resultado.getString(2);
+                url = resultado.getString(3);                
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
